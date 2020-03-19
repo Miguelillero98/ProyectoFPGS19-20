@@ -25,6 +25,13 @@ class Wallet
      * @ORM\Column(type="string", length=255)
      */
     private $Skins;
+    
+//ASOCIACIONES
+    
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="wallet")
+     */
+    private $user;
 
     public function getId(): ?int
     {

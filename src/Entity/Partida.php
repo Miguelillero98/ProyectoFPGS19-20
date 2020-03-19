@@ -20,6 +20,21 @@ class Partida
      * @ORM\Column(type="integer")
      */
     private $apuesta;
+    
+//ASOCIACIONES
+     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User")
+     * @ORM\JoinTable(name="jugadores",
+     *      joinColumns={@ORM\JoinColumn(name="partida_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="users_id", referencedColumnName="id")}
+     *      )
+     */
+    private $packs;
+    
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {

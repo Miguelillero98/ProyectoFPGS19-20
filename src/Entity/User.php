@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use \Doctrine\Common\Collections;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -37,7 +38,41 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+    
+//ASOCIACIONES
+    
+    
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Wallet", mappedBy="user")
+     */
+    private $wallet;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Carro", mappedBy="user")
+     */
+    private $carro;
+    
+    /**
+     * Many Users have Many Users.
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="myFriends")
+     */
+    private $friendsWithMe;
 
+    /**
+     * Many Users have many Users.
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="friendsWithMe")
+     * @ORM\JoinTable(name="friends",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="friend_user_id", referencedColumnName="id")}
+     *      )
+     */
+    private $myFriends;
+
+    public function __construct() {
+        $this->friendsWithMe = new ArrayCollection();
+        $this->myFriends = new ArrayCollection();
+    }
+    
     public function getId(): ?int
     {
         return $this->id;
