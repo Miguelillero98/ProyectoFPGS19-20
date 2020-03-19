@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PartidaRepository")
@@ -29,11 +30,11 @@ class Partida
      *      inverseJoinColumns={@ORM\JoinColumn(name="users_id", referencedColumnName="id")}
      *      )
      */
-    private $packs;
+    private $jugadores;
     
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->jugadores = new ArrayCollection();
     }
 
     public function getId(): ?int

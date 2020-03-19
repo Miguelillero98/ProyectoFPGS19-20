@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CarroRepository")
@@ -31,8 +33,11 @@ class Carro
      *      )
      */
     private $packs;
+    function __construct() {
+        $this->packs = new ArrayCollection();
+    }
 
-    public function getId(): ?int
+        public function getId(): ?int
     {
         return $this->id;
     }
