@@ -33,11 +33,14 @@ class Carro
      *      )
      */
     private $packs;
-    function __construct() {
+    
+    //CONSTRUCTOR
+    function __construct(User $user) {
         $this->packs = new ArrayCollection();
+        $this->user = $user->getId();
     }
-
-        public function getId(): ?int
+    //GETTERS AND SETTERS
+    public function getId(): ?int
     {
         return $this->id;
     }

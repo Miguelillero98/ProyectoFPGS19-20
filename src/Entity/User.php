@@ -67,12 +67,13 @@ class User implements UserInterface
      *      )
      */
     private $myFriends;
-
+//CONSTRUCTOR
     public function __construct() {
         $this->friendsWithMe = new ArrayCollection();
         $this->myFriends = new ArrayCollection();
+        $this->roles = ['ROLE_USER'];
     }
-    
+    //GETTTERS AND SETTERS
     public function getId(): ?int
     {
         return $this->id;
@@ -89,8 +90,31 @@ class User implements UserInterface
 
         return $this;
     }
+    function getEmail() {
+        return $this->email;
+    }
 
-    /**
+    function getFriendsWithMe() {
+        return $this->friendsWithMe;
+    }
+
+    function getMyFriends() {
+        return $this->myFriends;
+    }
+
+    function setEmail($email) {
+        $this->email = $email;
+    }
+
+    function setFriendsWithMe($friendsWithMe) {
+        $this->friendsWithMe = $friendsWithMe;
+    }
+
+    function setMyFriends($myFriends) {
+        $this->myFriends = $myFriends;
+    }
+
+        /**
      * A visual identifier that represents this user.
      *
      * @see UserInterface

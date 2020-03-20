@@ -32,6 +32,15 @@ class Wallet
      * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="wallet")
      */
     private $user;
+    
+    //CONSTRUCTOR
+    function __construct(User $user) {
+        $this->cantidad = 0;
+        $this->Skins = '';
+        $this->user = $user->getId();
+    }
+
+    //GETTERS ADN SETTERS
 
     public function getId(): ?int
     {
