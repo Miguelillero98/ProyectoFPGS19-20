@@ -35,17 +35,24 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->persist($user);
         $this->_em->flush();
     }
-    public function loadUserByUsername($usernameOrEmail)
-    {
-        return $this->createQuery(
-                'SELECT u
-                FROM User u
-                WHERE u.username = :query
-                OR u.email = :query'
+    public function loadFriends(User $user) {
+        return $this->getEntityManager()->createQuery(
+                'SELECT f.friend_user_id
+                FROM friends f
+                WHERE f.user_id = :query'
             )
-            ->setParameter('query', $usernameOrEmail)
-            ->getQuery()
-            ->getOneOrNullResult();
+            ->setParameter('query', $user->getId());
+    }
+    
+    
+    
+    public function loadUserByUsername($username)
+    {
+        return $this->getEntityManager()->createQuery(
+                'SELECT u.nickname
+                FROM user u
+                WHERE u.nickname = :query'
+            )->setParameter('query', $username->getId());
     }
 
     // /**

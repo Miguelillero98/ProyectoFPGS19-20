@@ -14,7 +14,7 @@ use App\Form\RegistroType;
 class RegistroController extends AbstractController
 {
     /**
-     * @Route("/registro", name="regist")
+     * @Route("/regist", name="regist")
      */
     public function index(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
