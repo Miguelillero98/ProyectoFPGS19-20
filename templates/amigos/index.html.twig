@@ -11,22 +11,28 @@
 
 <div class="example-wrapper">
     <h1>{{ controller_name }}! ✅</h1>
+    
+    <div>
+        {% for i in amigos %}
+            <div>
+                {{ i.nickname }}
+                <button>No hace nada</button>
+
+            </div>
+        {% endfor %}
+    </div>
     <div class="">
         <h3>Añadir amigos</h3>
-        <input type='text' name='buscaAmigo' id='buscaAmigo' placeholder='Introduce el nickname'/>
-        <button id='Buscar'>
-            Buscar
-        </button>
+        <form method="post">
+            <input type='text' name='buscaAmigo' id='buscaAmigo' placeholder='Introduce el nickname'/>
+            <button id='Buscar' type="submit">
+                Buscar
+            </button>
+        </form>
         <div id="resultado">
             
         </div>
     </div>
-    <div>
-        {% for i in amigos %}
-            {{ i }}
-        {% endfor %}
-    </div>
-    
 </div>
     {% block javascripts %}
         {{ parent() }}

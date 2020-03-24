@@ -14,7 +14,7 @@ class AmigosController extends AbstractController
     /**
      * @Route("/amigos", name="amigos")
      */
-    public function index(Request $re)
+    public function index()
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
@@ -22,23 +22,25 @@ class AmigosController extends AbstractController
         
         return $this->render('amigos/index.html.twig', [
             'controller_name' => 'Amigos',
-            'amigos' => $query,
+            'amigos' => $user->getMyFriends(),
         ]);
     }
     /**
      * @Route("/anadir_amigos",options={"expose"=true} , name="anadir_amigos")
      */
-    public function add(Request $request)
+    public function search(Request $request)
     {
-        if($request->isXmlHttpRequest()){
-            $em = $this->getDoctrine()->getManager();
-            $user = $this->getUser();
-            $nickname = $request->request->get('nickname');
-            $addUser = $em->getRepository(User::class)->loadUserByUsername($nickname);
-            return new JsonResponse(['addUser'=>$addUser]);
-        }else{
-            throw new \Exception('no me hackes');
-        }        
-        
+        $em = $this->getDoctrine()->getManager();
+        $nickname = $request->request->get('b');
+        $addUser = $em->getRepository(User::class)->loadUserByUsername($nickname);
+        return new JsonResponse(['addUser'=>$addUser]);
+    }
+    /**
+     * @Route("/anadir",options={"expose"=true} , name="anadir")
+     */
+    public function add($id)
+    {
+        $user = getUser();
+        $user->setMyFriends($id);
     }
 }

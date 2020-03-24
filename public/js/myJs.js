@@ -9,16 +9,26 @@ function buscaAmigos(){
     $.ajax({
         type:'POST',
         url: Ruta,
-        data: nick,
+        data: "b="+nick,
         async: true,
-        dataType: 'html',
+        dataType: 'json',
         success: function(data){
-            console.log(data['addUser']);
+            $('#resultado').html("<p>"+data+"</p><button id='anadir'>Añadir</button>");
         }
     });
 }
+function anadir(){
+    
+}
 $(document).ready(function(){
-    $('#Buscar').click(function(){
+    $('#Buscar').click(function(e){
+        e.preventDefault();
         buscaAmigos();
+    });
+    $('#resultado').mouseenter(function(){
+        $('#anadir').click(function(e){
+            e.preventDefault();
+            anadir();
+        });
     });
 });
