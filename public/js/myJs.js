@@ -9,11 +9,9 @@ function buscaAmigos(){
     $.ajax({
         type:'POST',
         url: Ruta,
-<<<<<<< HEAD
         dataType: 'json',
         data: {"nick":nick},
         async: true,
-        
         success: function(response){
             var jsonData = JSON.parse(response);
             $('#resultado').html("<p>" + jsonData + "</p><button id='anadir' value='" + jsonData + "'>Añadir</button>");
@@ -34,27 +32,15 @@ function anadir(){
         }
     });
 }
-=======
-        data: nick,
-        async: true,
-        dataType: 'html',
-        success: function(data){
-            console.log(data['addUser']);
-        }
-    });
-}
->>>>>>> parent of 3edea8d... 24/03
 $(document).ready(function(){
-    $('#Buscar').click(function(){
+    $('#Buscar').click(function(e){
+        e.preventDefault();
         buscaAmigos();
     });
-<<<<<<< HEAD
     $('#resultado').mouseenter(function(){
         $('#anadir').click(function(e){
             e.preventDefault();
            // anadir();
         });
     });
-=======
->>>>>>> parent of 3edea8d... 24/03
 });
