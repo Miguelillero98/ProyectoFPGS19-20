@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WalletRepository")
@@ -34,10 +35,10 @@ class Wallet
     private $user;
     
     //CONSTRUCTOR
-    function __construct(User $user) {
-        $this->cantidad = 0;
-        $this->Skins = '';
-        $this->user = $user->getId();
+    function __construct($u) {
+        $this->cantidad = 100;
+        $this->Skins = new ArrayCollection();
+        $this->user = $u;
     }
 
     //GETTERS ADN SETTERS

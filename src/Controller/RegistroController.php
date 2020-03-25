@@ -26,8 +26,9 @@ class RegistroController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $usuarioRegistrando->setPassword($passwordEncoder->encodePassword($usuarioRegistrando,$form['password']->getData()));
-            
             $em->persist($usuarioRegistrando);
+            $em->persist($wallet);
+            $em->persist($carro);
             $em->flush();
             $this->addFlash('exito', 'Se ha registrado exitosamente');
             return $this->redirectToRoute('app_login');

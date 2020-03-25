@@ -18,7 +18,6 @@ class AmigosController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
-        $query = $em->getRepository(User::class)->loadFriends($user);
         
         return $this->render('amigos/index.html.twig', [
             'controller_name' => 'Amigos',
@@ -31,7 +30,7 @@ class AmigosController extends AbstractController
     public function search(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $nickname = $request->request->get('b');
+        $nickname = $request->request->get('nick');
         $addUser = $em->getRepository(User::class)->loadUserByUsername($nickname);
         return new JsonResponse(['addUser'=>$addUser]);
     }

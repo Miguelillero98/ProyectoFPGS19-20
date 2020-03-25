@@ -9,16 +9,29 @@ function buscaAmigos(){
     $.ajax({
         type:'POST',
         url: Ruta,
-        data: "b="+nick,
-        async: true,
         dataType: 'json',
-        success: function(data){
-            $('#resultado').html("<p>"+data+"</p><button id='anadir'>Añadir</button>");
+        data: {"nick":nick},
+        async: true,
+        
+        success: function(response){
+            var jsonData = JSON.parse(response);
+            $('#resultado').html("<p>" + jsonData + "</p><button id='anadir' value='" + jsonData + "'>Añadir</button>");
         }
     });
 }
 function anadir(){
-    
+    var Ruta = Routing.generate('anadir')
+    var nick = $('#buscaAmigo').val();
+    $.ajax({
+        type:'POST',
+        url: Ruta,
+        data: {"nick":nick},
+        async: true,
+        dataType: 'json',
+        success: function(){
+            window.reload();
+        }
+    });
 }
 $(document).ready(function(){
     $('#Buscar').click(function(e){
@@ -28,7 +41,7 @@ $(document).ready(function(){
     $('#resultado').mouseenter(function(){
         $('#anadir').click(function(e){
             e.preventDefault();
-            anadir();
+           // anadir();
         });
     });
 });

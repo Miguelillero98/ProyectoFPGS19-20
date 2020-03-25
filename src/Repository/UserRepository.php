@@ -36,25 +36,12 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->persist($user);
         $this->_em->flush();
     }
-    public function loadFriends(User $user) {
-        $conn = $this->getEntityManager()->getConnection();
-        $sql = '
-            SELECT u.nickname
-            FROM friends f, user u
-            WHERE f.user_id = :query and
-            f.friend_user_id = u.id
-            ';
-        $stmt = $conn->prepare($sql);
-        $stmt->execute(['query' => $user->getId()]);
-
-        // returns an array of arrays (i.e. a raw data set)
-        return $stmt->fetchAll();
-    }
+    
     public function loadUserByUsername($username)
     {
         $conn = $this->getEntityManager()->getConnection();
         $sql = '
-            SELECT u.id FROM user u
+            SELECT * FROM user u
             WHERE u.nickname = :query
             ';
         $stmt = $conn->prepare($sql);

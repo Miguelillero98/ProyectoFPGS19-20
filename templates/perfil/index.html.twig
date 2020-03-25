@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PerfilController!{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+<style>
+    ul{
+        list-style:none;
+    }
+</style>
+
+<div class="example-wrapper">
+    <h1>{{ controller_name }}</h1>
+    <ul>
+        <li>
+            <h2>Nickname</h2>
+            <p>{{ user.nickname }}</p>
+        </li>
+        <li>
+            <h2>Email</h2>
+            <p>{{ user.email }}</p>
+        </li>
+        <li>
+            <h2>Skins</h2>
+            <p></p>
+        </li>
+    </ul>
+</div>
+{% endblock %}
