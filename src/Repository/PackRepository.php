@@ -47,4 +47,23 @@ class PackRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function añadirPack($contenido, $precio, $foto){
+        $conn = $this->getEntityManager()->getConnection();
+        $sql = '
+            Insert into pack(contenido, precio, foto) values(:conten, :precio, :foto)
+            ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['conten' => $contenido, 'precio' => $precio, 'foto' => $foto]);
+    }
+    public function BorrarPack($id){
+        $conn = $this->getEntityManager()->getConnection();
+        $sql = '
+            delete from pack where pack.id = :id
+            ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['id' => $id]);
+    }
+    public function ModificarPack(){
+        $conn = $this->getEntityManager()->getConnection();
+    }
 }

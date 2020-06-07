@@ -11,29 +11,44 @@
     </head>
     <body class='container text-center'>
         {% block body %}
-            <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-                <a class="navbar-brand text-primary mr-auto" href="{{ path('principal') }}">ParchisMg98</a>
-                <a class="nav-link" href="#">Jugar <span class="sr-only">(current)</span></a>
+            <nav class="row navbar navbar-expand-lg navbar-light bg-dark">
+                <a class="col-5 col-md-2 navbar-brand text-primary" href="{{ path('principal') }}">ParchisMg98</a>
+                <a class="col-5 col-md-2 nav-link" href="#">Jugar <span class="sr-only">(current)</span></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="btn nav-link text-primary" href="#">Tienda</a>
+                <div class="col-2 col-md-10 collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="row navbar-nav">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="col-4 nav-item">
+                                <a class="btn nav-link text-primary" href="{{ path('admin') }}">Administrador</a>
+                            </li>
+                            <li class="col-2 nav-item">
+                                <a class="btn nav-link text-primary" href="{{ path('tienda') }}">Tienda</a>
+                            </li>
+                            <li class="col-2 nav-item">
+                                <a class="btn nav-link text-primary" href="{{ path('amigos') }}">Amigos</a>
+                            </li>
+                            <li class="col-2 nav-item">
+                                <a class="btn nav-link text-primary" href="{{ path('perfil') }}">Perfil</a>
+                            </li>
+                            <li class="col-2 nav-item">
+                                <a class="btn nav-link text-primary" href="{{ path('app_logout') }}">Desconectarse</a>
+                            </li>
+                        {% else %}
+                        <li class="col-3 nav-item">
+                            <a class="btn nav-link text-primary" href="{{ path('tienda') }}">Tienda</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="col-3 nav-item">
                             <a class="btn nav-link text-primary" href="{{ path('amigos') }}">Amigos</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="col-3 nav-item">
                             <a class="btn nav-link text-primary" href="{{ path('perfil') }}">Perfil</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="btn nav-link text-primary" href="#">Ajustes</a>
-                        </li>
-                        <li class="nav-item">
+                        <li class="col-2 nav-item">
                             <a class="btn nav-link text-primary" href="{{ path('app_logout') }}">Desconectarse</a>
                         </li>
+                        {% endif %}
                     </ul>
                 </div>
             </nav>

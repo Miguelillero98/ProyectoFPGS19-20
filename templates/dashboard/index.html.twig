@@ -9,7 +9,7 @@
     <h1>Bienvenido {{ user.nickname }}</h1>
     <div class='btn-group-vertical btn-block'>
         <a class='btn bg-primary btn-lg text-light my-4' href='#'>Jugar</a>
-        <a class='btn bg-primary btn-lg text-light my-4' href='#'>Tienda</a>
+        <a class='btn bg-primary btn-lg text-light my-4' href='{{ path('tienda') }}'>Tienda</a>
         <a class='btn bg-primary btn-lg text-light my-4' href='{{ path('amigos') }}'>Amigos</a>
     </div>
     {% block javascripts %}

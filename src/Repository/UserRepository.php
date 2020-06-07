@@ -41,14 +41,15 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         $conn = $this->getEntityManager()->getConnection();
         $sql = '
-            SELECT * FROM user u
+            SELECT u.id, u.nickname FROM user u
             WHERE u.nickname like "%:query%"
             ';
         $stmt = $conn->prepare($sql);
         $stmt->execute(['query' => $username]);
-
+        $row = $stmt->fetchAll();
+        dump($row);
         // returns an array of arrays (i.e. a raw data set)
-        return new JsonResponse($stmt->fetchAll());
+        return dump($row);
     }
 
     /**
@@ -58,7 +59,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('u')
-            ->andWhere('u.nickname = :val')
+            ->andWhere('u.nickname like "%:val%"')
             ->setParameter('val', $value)
             ->orderBy('u.id', 'ASC')
             ->setMaxResults(10)

@@ -20,6 +20,10 @@ class Pack
      * @ORM\Column(type="string", length=255)
      */
     private $contenido;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $foto;
 
     /**
      * @ORM\Column(type="float")
@@ -37,6 +41,17 @@ class Pack
     }
 
     public function setContenido(string $contenido): self
+    {
+        $this->contenido = $contenido;
+
+        return $this;
+    }
+    public function getFoto(): ?string
+    {
+        return $this->contenido;
+    }
+
+    public function setFoto(string $contenido): self
     {
         $this->contenido = $contenido;
 

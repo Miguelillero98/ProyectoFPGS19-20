@@ -25,14 +25,24 @@ class AmigosController extends AbstractController
         ]);
     }
     /**
-     * @Route("/anadir_amigos",options={"expose"=true} , name="anadir_amigos")
+     * @Route("/busca_amigos",options={"expose"=true} , name="busca_amigos")
      */
     public function search(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $nickname = $request->request->get('nick');
-        $addUser = $em->getRepository(User::class)->loadUserByUsername($nickname);
-        return new JsonResponse(['addUser'=>$addUser]);
+        if($request->isXmlHttpRequest()){
+            $em = $this->getDoctrine()->getManager();
+            $nickname = $request->request->get('b');
+            $addUser = $em->getRepository(User::class)->loadUserByUsername($nickname);
+            if($addUser){
+                $encoders=[new JsonEncoder(),];
+                $normalizers = [new ObjetNormalizer(),];
+                $serializer= new Serializer($normalizers, $encoders);
+                $data = $serializer->serialize($addUser,'json');
+                return new JsonResponse($data,200,[],true);
+            }
+            
+        }
+        return new JsonResponse(['type' => 'error', 'message' => 'AJAX only']);
     }
     /**
      * @Route("/anadir",options={"expose"=true} , name="anadir")

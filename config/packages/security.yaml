@@ -43,3 +43,5 @@ security:
         - { path: ^/dashboard, roles: ROLE_USER }
         - { path: ^/amigos, roles: ROLE_USER }
         - { path: ^/perfil, roles: ROLE_USER }
+        - { path: ^/tienda, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }

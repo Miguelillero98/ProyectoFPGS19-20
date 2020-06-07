@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {{ parent() }}
+    <h2>Pack</h2>
+    
+    <a class='btn bg-primary btn-lg text-light my-4' href="{{ path('ap') }}">Añadir pack</a>
+    <a class='btn bg-primary btn-lg text-light my-4' href="#">Eliminar pack</a>
+    <a class='btn bg-primary btn-lg text-light my-4' href="#">Modificar pack</a>
+    
+    <h2>Usuarios</h2>
+    <form action="" method="post">
+        <input type="number" name="id" Placeholder="Id">
+        <input type="number" name="password" Placeholder="Contraseña">
+        <input type="number" name="nickname" Placeholder="NickName">
+        
+        <a class='btn bg-primary btn-lg text-light my-4' href="#">Banear usuario</a>
+        <a class='btn bg-primary btn-lg text-light my-4' href="#">Desbanear usuario</a>
+        <a class='btn bg-primary btn-lg text-light my-4' href="#">modificar usuario</a>
+        <a class='btn bg-primary btn-lg text-light my-4' href="#">eliminar usuario</a>
+    </form>
+    {% block javascripts %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

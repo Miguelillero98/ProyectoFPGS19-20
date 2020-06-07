@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TiendaController!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    {{ form(form) }}
+    {% block javascripts %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
