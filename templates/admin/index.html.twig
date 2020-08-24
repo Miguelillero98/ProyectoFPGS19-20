@@ -6,23 +6,34 @@
 {% endblock %}
 {% block body %}
     {{ parent() }}
-    <h2>Pack</h2>
-    
-    <a class='btn bg-primary btn-lg text-light my-4' href="{{ path('ap') }}">Añadir pack</a>
-    <a class='btn bg-primary btn-lg text-light my-4' href="#">Eliminar pack</a>
-    <a class='btn bg-primary btn-lg text-light my-4' href="#">Modificar pack</a>
-    
-    <h2>Usuarios</h2>
-    <form action="" method="post">
-        <input type="number" name="id" Placeholder="Id">
-        <input type="number" name="password" Placeholder="Contraseña">
-        <input type="number" name="nickname" Placeholder="NickName">
-        
-        <a class='btn bg-primary btn-lg text-light my-4' href="#">Banear usuario</a>
-        <a class='btn bg-primary btn-lg text-light my-4' href="#">Desbanear usuario</a>
-        <a class='btn bg-primary btn-lg text-light my-4' href="#">modificar usuario</a>
-        <a class='btn bg-primary btn-lg text-light my-4' href="#">eliminar usuario</a>
-    </form>
+    <div class='container'>
+        <h2>Pack</h2>
+        <form action="" method="post" class="row">
+            <input type="number" name="id" Placeholder="Id" class='col-3 mx-auto'>
+            <input type="text" name="contenido" Placeholder="Contenido" class='col-3 mx-auto'>
+            <input type="number" name="precio" Placeholder="Precio" class='col-3 mx-auto'>
+            <input type="text" name="foto" Placeholder="Foto" class='col-3 mx-auto'>
+            
+            <input type="submit" class='btn bg-primary btn-lg text-light my-4 col-4 mx-auto' value="Añadir pack">
+            <input type="submit" class='btn bg-primary btn-lg text-light my-4 col-3 mx-auto' value="Eliminar pack">
+            <input type="submit" class='btn bg-primary btn-lg text-light my-4 col-4 mx-auto' value="Modificar pack">
+        </form>
+        <h2>Usuarios</h2>
+        <form action="" method="post" class='row'>
+            <div class='col-12 row'>
+                <input type="number" name="id" Placeholder="Id" class='col-3 mx-auto'>
+                <input type="text" name="password" Placeholder="Contraseña" class='col-3 mx-auto'>
+                <input type="text" name="nickname" Placeholder="NickName" class='col-3 mx-auto'>
+                <input type="text" name="email" Placeholder="Email" class='col-3 mx-auto'>
+            </div>
+            <div class=' col-12 row'>
+                <input type="submit" class='btn bg-primary btn-lg text-light my-4 col-5 mx-auto' value="Banear usuario">
+                <input type="submit" class='btn bg-primary btn-lg text-light my-4 col-5 mx-auto' value="Desbanear usuario">
+                <input type="submit" class='btn bg-primary btn-lg text-light my-4 col-5 mx-auto' value="Modificar usuario">
+                <input type="submit" class='btn bg-primary btn-lg text-light my-4 col-5 mx-auto' value="Eliminar usuario">
+            </div>
+        </form>
+    </div>
     {% block javascripts %}
         {{ parent() }}
     {% endblock %}
