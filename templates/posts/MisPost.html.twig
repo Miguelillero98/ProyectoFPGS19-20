@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PostsController!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {{ parent() }}
+
+
+<div class="example-wrapper">
+    <h1>Mis Posts! ✅</h1>
+    {% for p in post %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 cursor">
+                    <div class="bg-white rounded p-3 my-3"  onclick="window.location.href='{{ path('verPost',{id:p.id}) }}'">
+                        <div class="d-flex bd-highlight">
+                            <div class="p-2 flex-grow-1 bd-highlight">
+                                <h3>{{ p.titulo }}</h3>
+                                <div class=" bg-green"><i class="far fa-clock"></i> <strong>Fecha de publicación: {{ p.fecha | date('Y-m-d') }}</strong></div>
+                            </div>
+                            <div class="p-2 bd-highlight">
+                                <div class="align-self-center">
+                                    <img class="rounded img-fluid" src="{{ asset('uploads/fotos/'~p.foto) }}" width="150px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="bg-white rounded p-3 my-3">
+                        <h4>Comentarios</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

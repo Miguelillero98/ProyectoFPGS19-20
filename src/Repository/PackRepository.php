@@ -63,7 +63,12 @@ class PackRepository extends ServiceEntityRepository
         $stmt = $conn->prepare($sql);
         $stmt->execute(['id' => $id]);
     }
-    public function ModificarPack(){
+    public function ModificarPack($id, $contenido, $precio, $foto){
         $conn = $this->getEntityManager()->getConnection();
+         $sql = '
+            alter table pack where pack.id = :id set pack.contenido = :conten and pack.precio = :precio and pack.foto = :foto
+            ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['id' => $id, 'conten' => $contenido, 'precio' => $precio, 'foto' => $foto]);
     }
 }

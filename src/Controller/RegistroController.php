@@ -7,8 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\User;
-use App\Entity\Wallet;
-use App\Entity\Carro;
 use App\Form\RegistroType;
 
 class RegistroController extends AbstractController
@@ -19,16 +17,13 @@ class RegistroController extends AbstractController
     public function index(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $usuarioRegistrando = new User();
-        $wallet = new Wallet($usuarioRegistrando);
-        $carro= new Carro($usuarioRegistrando);
+        
         $form = $this->createForm(RegistroType::class, $usuarioRegistrando);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $usuarioRegistrando->setPassword($passwordEncoder->encodePassword($usuarioRegistrando,$form['password']->getData()));
             $em->persist($usuarioRegistrando);
-            $em->persist($wallet);
-            $em->persist($carro);
             $em->flush();
             $this->addFlash('exito', 'Se ha registrado exitosamente');
             return $this->redirectToRoute('app_login');

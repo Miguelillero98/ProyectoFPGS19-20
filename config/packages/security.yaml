@@ -1,4 +1,5 @@
 security:
+    
     encoders:
         App\Entity\User:
             algorithm: auto
@@ -19,6 +20,10 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /dashboard
             anonymous: lazy
             provider: users_in_memory
             guard:
@@ -40,8 +45,14 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/ban, roles: ROLE_BANNED }
         - { path: ^/dashboard, roles: ROLE_USER }
         - { path: ^/amigos, roles: ROLE_USER }
         - { path: ^/perfil, roles: ROLE_USER }
         - { path: ^/tienda, roles: ROLE_USER }
+        - { path: ^/foro, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/registrar-post, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/mis-posts, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/posts, roles: [ROLE_USER, ROLE_ADMIN] }
         - { path: ^/admin, roles: ROLE_ADMIN }
+        

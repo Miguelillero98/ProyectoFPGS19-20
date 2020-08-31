@@ -20,15 +20,18 @@ class Pack
      * @ORM\Column(type="string", length=255)
      */
     private $contenido;
+    
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $precio;
+    
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $foto;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $precio;
+    
 
     public function getId(): ?int
     {
@@ -48,12 +51,12 @@ class Pack
     }
     public function getFoto(): ?string
     {
-        return $this->contenido;
+        return $this->foto;
     }
 
-    public function setFoto(string $contenido): self
+    public function setFoto(string $foto): self
     {
-        $this->contenido = $contenido;
+        $this->foto = $foto;
 
         return $this;
     }

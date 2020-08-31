@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}{% endblock %}
+{% block title %}Hello BanController!{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
 {% endblock %}
@@ -8,9 +8,7 @@
 
 
 <div class="example-wrapper">
-    {{ form(form) }}
+    <h1>Esta usted baneado permanentemente ✅</h1>
+    <a href="{{ path('app_logout') }}">Logout</a>
 </div>
-    {% block javascripts %}
-        {{ parent() }}
-    {% endblock %}
 {% endblock %}

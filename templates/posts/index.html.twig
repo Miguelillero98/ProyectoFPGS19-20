@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TiendaController!{% endblock %}
-
+{% block title %}Hello PostsController!{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
 {% endblock %}
-
 {% block body %}
     {{ parent() }}
+
+
+<div class="example-wrapper">
+    <h1>{{ controller_name }}! ✅</h1>
     {{ form(form) }}
-    {% block javascripts %}
-        {{ parent() }}
-    {% endblock %}
+</div>
 {% endblock %}

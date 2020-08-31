@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PostsController!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {{ parent() }}
+    {% set numLikes = post.likes | split(',') %}
+   
+
+    <div class="example-wrapper">
+        <h1>✅</h1>
+        <div class="container bg-white rounded my-3 p-4">
+            <div class="d-flex bd-highlight">
+                <div class="p-2 flex-grow-1 bd-highlight">
+                    <h3>{{ post.titulo }}</h3>
+                    <div class="my-3" style="color:#3282b8;" onclick="darLike({{ post.id }})">
+                        <i class="fa fa-thumbs-up"></i>
+                        <strong>
+                            {% if app.user.id in numLikes %}
+                                <p>Te gusta</p>
+                            {% else %}
+                                <p>¿Te gusta?</p>
+                            {% endif %}
+                        </strong>
+                    </div>
+                    <div style="color:#c3f584;">
+                        <i class="far fa-clock"></i> <strong>Fecha de publicación: {{ post.fecha | date('Y-m-d') }}</strong>
+                    </div>
+                </div>
+                <div class="p-2 bd-highlight">
+                    <div class="align-self-center">
+                        <img class="rounded" src="{{ asset('uploads/fotos/'~post.foto) }}" width="150px">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="text-justify my-3">
+                {{ post.contenido }}
+            </div>
+        </div>
+        <div class="container bg-white rounded my-3 p-4">
+           <h3>Añadir comentario</h3>
+           {{ form(formComentarios) }}
+        </div>
+        <div class="container bg-white rounded my-3 p-4">
+           <h3>Comentarios!</h3>
+        </div>
+        {% for c in comentarios %}
+            <div class="container bg-white rounded my-3 p-4">
+                <p><b>{{ c.user.nickname }}</b> dice:</p>
+                <p>{{ c.comentario }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('js/miAjax.js') }}"></script>
+{% endblock %}

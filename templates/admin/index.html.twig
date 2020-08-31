@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}Hello Admin!{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
 {% endblock %}
@@ -8,18 +8,21 @@
     {{ parent() }}
     <div class='container'>
         <h2>Pack</h2>
-        <form action="" method="post" class="row">
-            <input type="number" name="id" Placeholder="Id" class='col-3 mx-auto'>
-            <input type="text" name="contenido" Placeholder="Contenido" class='col-3 mx-auto'>
-            <input type="number" name="precio" Placeholder="Precio" class='col-3 mx-auto'>
-            <input type="text" name="foto" Placeholder="Foto" class='col-3 mx-auto'>
-            
-            <input type="submit" class='btn bg-primary btn-lg text-light my-4 col-4 mx-auto' value="Añadir pack">
-            <input type="submit" class='btn bg-primary btn-lg text-light my-4 col-3 mx-auto' value="Eliminar pack">
-            <input type="submit" class='btn bg-primary btn-lg text-light my-4 col-4 mx-auto' value="Modificar pack">
+        <form action="packControl" method="post" enctype="multipart/form-data">
+            <div class='row'>
+                <input type="number" name="id" Placeholder="Id" class='col-3 mx-auto'>
+                <input type="text" name="contenido" Placeholder="Contenido" class='col-3 mx-auto'>
+                <input type="number" name="precio" Placeholder="Precio" class='col-3 mx-auto'>
+                <input type="file" name="imagen" class='col-3 mx-auto'>
+            </div>
+            <div class='row'>
+                <input type="submit" name="submit" class='btn bg-primary btn-lg text-light my-4 col-4 mx-auto' value="Añadir pack">
+                <input type="submit" name="submit" class='btn bg-primary btn-lg text-light my-4 col-3 mx-auto' value="Eliminar pack">
+                <input type="submit" name="submit" class='btn bg-primary btn-lg text-light my-4 col-4 mx-auto' value="Modificar pack">
+            </div>
         </form>
         <h2>Usuarios</h2>
-        <form action="" method="post" class='row'>
+        <form action="userControl" method="post" enctype="multipart/form-data">
             <div class='col-12 row'>
                 <input type="number" name="id" Placeholder="Id" class='col-3 mx-auto'>
                 <input type="text" name="password" Placeholder="Contraseña" class='col-3 mx-auto'>
@@ -27,10 +30,24 @@
                 <input type="text" name="email" Placeholder="Email" class='col-3 mx-auto'>
             </div>
             <div class=' col-12 row'>
-                <input type="submit" class='btn bg-primary btn-lg text-light my-4 col-5 mx-auto' value="Banear usuario">
-                <input type="submit" class='btn bg-primary btn-lg text-light my-4 col-5 mx-auto' value="Desbanear usuario">
-                <input type="submit" class='btn bg-primary btn-lg text-light my-4 col-5 mx-auto' value="Modificar usuario">
-                <input type="submit" class='btn bg-primary btn-lg text-light my-4 col-5 mx-auto' value="Eliminar usuario">
+                <input type="submit" name="submit" class='btn bg-primary btn-lg text-light my-4 col-5 mx-auto' value="Banear usuario">
+                <input type="submit" name="submit" class='btn bg-primary btn-lg text-light my-4 col-5 mx-auto' value="Desbanear usuario">
+                <input type="submit" name="submit" class='btn bg-primary btn-lg text-light my-4 col-5 mx-auto' value="Modificar usuario">
+                <input type="submit" name="submit" class='btn bg-primary btn-lg text-light my-4 col-5 mx-auto' value="Eliminar usuario">
+            </div>
+        </form>
+        <h2>Posts</h2>
+        <form action="postControl" method="post" enctype="multipart/form-data">
+            <div class='col-12 row'>
+                <input type="number" name="id" Placeholder="Id" class='col-3 mx-auto'>
+                <input type="text" name="titulo" Placeholder="Título" class='col-3 mx-auto'>
+                <input type="file" name="foto" Placeholder="foto" class='col-3 mx-auto'>
+                <input type="textarea" name="contenido" Placeholder="contenido" class='col-3 mx-auto'>
+                
+            </div>
+            <div class=' col-12 row'>
+                <input type="submit" name="submit" class='btn bg-primary btn-lg text-light my-4 col-5 mx-auto' value="Modificar post">
+                <input type="submit" name="submit" class='btn bg-primary btn-lg text-light my-4 col-5 mx-auto' value="Eliminar post">
             </div>
         </form>
     </div>

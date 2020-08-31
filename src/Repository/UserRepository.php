@@ -36,7 +36,16 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->persist($user);
         $this->_em->flush();
     }
-    
+    public function buscarPorCampo($campo, $valor) {
+        $conn = $this->getEntityManager()->getConnection();
+        $sql = '
+            select :campo from user where :campo like "%:valor%"
+            ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['campo' => $campo, 'valor' => $valor]);
+        $row = $stmt->fetchAll();
+        return $row;
+    }
     public function loadUserByUsername($username)
     {
         $conn = $this->getEntityManager()->getConnection();
@@ -80,4 +89,12 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         ;
     }
     */
+    public function eliminarUser($id){
+        $conn = $this->getEntityManager()->getConnection();
+        $sql = '
+            delete from user where user.id = :id
+            ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['id' => $id]);
+    }
 }

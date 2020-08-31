@@ -39,18 +39,18 @@ class User implements UserInterface
      */
     private $password;
     
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $cantidad;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Skins;
+    
+    
 //ASOCIACIONES
-    
-    
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Wallet", mappedBy="user")
-     */
-    private $wallet;
-    
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Carro", mappedBy="user")
-     */
-    private $carro;
     
     /**
      * Many Users have Many Users.
@@ -67,11 +67,13 @@ class User implements UserInterface
      *      )
      */
     private $myFriends;
-//CONSTRUCTOR
+    //CONSTRUCTOR
     public function __construct() {
         $this->friendsWithMe = new ArrayCollection();
         $this->myFriends = new ArrayCollection();
+        $this->Skins = new ArrayCollection();
         $this->roles = ['ROLE_USER'];
+        $this->cantidad = 100;
     }
     //GETTTERS AND SETTERS
     public function getId(): ?int
@@ -93,7 +95,29 @@ class User implements UserInterface
     function getEmail() {
         return $this->email;
     }
+     public function getCantidad(): ?int
+    {
+        return $this->cantidad;
+    }
 
+    public function setCantidad(int $cantidad): self
+    {
+        $this->cantidad = $cantidad;
+
+        return $this;
+    }
+
+    public function getSkins(): ?string
+    {
+        return $this->Skins;
+    }
+
+    public function setSkins(string $Skins): self
+    {
+        $this->Skins .= ' '.$Skins;
+
+        return $this;
+    }
     function getFriendsWithMe() {
         return $this->friendsWithMe;
     }

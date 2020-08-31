@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Dashboard!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+{{ parent() }}
+<div class="example-wrapper container">
+    <h1>{{ controller_name }}! ✅</h1>
+    <button class="bg-primary"><a class="text-dark" href="{{ path('posts') }}">Registrar Post</a></button>
+        {% for post in pagination %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 cursor">
+                        <div class="bg-white rounded p-3 my-3"  onclick="window.location.href='{{ path('verPost',{id:post.id}) }}'">
+                            <div class="d-flex bd-highlight">
+                                <div class="p-2 flex-grow-1 bd-highlight">
+                                    <h3>{{ post.titulo }}</h3>
+                                    <div class="my-3 bg-yellow"> <i class="fa fa-user"></i><strong> Creado por {{ post.nickname }}</strong></div>
+                                    <div class=" bg-green"><i class="far fa-clock"></i> <strong>Fecha de publicación: {{ post['fecha'] | date('Y-m-d') }}</strong></div>
+                                </div>
+                                <div class="p-2 bd-highlight">
+                                    <div class="align-self-center">
+                                        <img class="rounded img-fluid" src="{{ asset('uploads/fotos/'~post.foto) }}" width="150px">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        {% endfor %}
+        <div class="col-md-4">
+            <div class="bg-white rounded p-3 my-3">
+                <h4>Comentarios</h4>
+                {% for post in pagination %}
+                    <p><a href="{{ path('verPost',{id:post.id}) }}">{{ post.titulo }}</a><p>
+                {% endfor %}
+            </div>
+        </div>
+    </table>
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+</div>
+{% endblock %}

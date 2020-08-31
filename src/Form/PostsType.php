@@ -2,19 +2,22 @@
 
 namespace App\Form;
 
-use App\Entity\Pack;
+use App\Entity\Posts;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\HttpFoundation\File\File;
 
-class AnadirPackType extends AbstractType
+
+class PostsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id')
-            ->add('contenido')
+            ->add('titulo')
             ->add('foto', FileType::class, [
                 'label' => 'Seleccione una imagen',
                 // unmapped means that this field is not associated to any entity property
@@ -26,15 +29,15 @@ class AnadirPackType extends AbstractType
                 // in the associated entity, so you can use the PHP constraint classes
                 
             ])
-            ->add('precio')
-            ->add('Añadir', SubmitType::class)
+            ->add('contenido', TextareaType::class)
+            ->add('Guardar', SubmitType::class)
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Pack::class,
+            'data_class' => Posts::class,
         ]);
     }
 }
