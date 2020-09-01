@@ -12,3 +12,9 @@
     <a href="{{ path('app_logout') }}">Logout</a>
 </div>
 {% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

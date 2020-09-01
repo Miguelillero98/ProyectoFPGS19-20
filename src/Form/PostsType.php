@@ -14,6 +14,11 @@ use Symfony\Component\HttpFoundation\File\File;
 
 class PostsType extends AbstractType
 {
+    /*
+     * Función para construir un formulario para crear los posts,
+     * lso campos de este son: Título, foto, contenido y el botón para enviar
+     * el resto no se solicita porque se recoge de forma dinámica
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

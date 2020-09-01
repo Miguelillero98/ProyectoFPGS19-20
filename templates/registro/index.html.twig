@@ -10,7 +10,10 @@
 <div class="example-wrapper">
     {{ form(form) }}
 </div>
-    {% block javascripts %}
-        {{ parent() }}
-    {% endblock %}
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}

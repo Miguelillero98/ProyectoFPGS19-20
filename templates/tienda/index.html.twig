@@ -15,11 +15,14 @@
                 <img class='col-12 col-md-3 foto' src="{{ asset('uploads/fotos/'~item.foto) }}" alt="{{ item.foto }}">
                 <p class="col-12 col-md-3 contenido">{{ item.contenido }}</p>
                 <p class='col-12 col-md-3 precio'>{{ item.precio }} €</p>
-                <input class='col-12 col-md-3' type='button' value='Comprar'>
+                <input class='col-12 col-md-3 text-light bg-primary' type='button' value='Comprar'>
             </div>
         {% endfor %}
     </div>
-    {% block javascripts %}
-        {{ parent() }}
-    {% endblock %}
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}

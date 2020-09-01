@@ -14,11 +14,11 @@ class DashboardController extends AbstractController
     {
         $user = $this->getUser();
         $roles = $user->getRoles();
-        if($roles[0] == "ROLE_BANNED"){
+        if($roles[0] == "ROLE_BANED"){
             return $this->redirectToRoute('ban');
-        }
+        }else{
         return $this->render('dashboard/index.html.twig', [
             'user' => $user,
-        ]);
+        ]);}
     }
 }

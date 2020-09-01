@@ -22,22 +22,27 @@
     </div>
     <div class="">
         <h3>Añadir amigos</h3>
-        <form method="post">
+        <form method="post" action="busca_amigos">
             <input type='text' name='buscaAmigo' id='buscaAmigo' placeholder='Introduce el nickname'/>
             <button id='Buscar' type="submit">
                 Buscar
             </button>
         </form>
         <div id="resultado">
-            
+            {% for i in resultado %}
+                <p>{{ i.nick }}</p>
+            {% endfor %}
         </div>
     </div>
 </div>
-    {% block javascripts %}
-        {{ parent() }}
-        <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
-        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-        <script src="{{ asset('js/myJs.js') }}"></script>
-    {% endblock %}
 
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('js/myJs.js') }}"></script>
 {% endblock %}

@@ -38,3 +38,9 @@
     {% endfor %}
 </div>
 {% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

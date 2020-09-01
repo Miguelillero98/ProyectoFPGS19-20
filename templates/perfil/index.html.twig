@@ -6,48 +6,52 @@
 {% endblock %}
 {% block body %}
     {{ parent() }}
+    <div class="example-wrapper">
+        <ul id="listaPerfil">
+            <li>
+                <h1>{{ controller_name }}</h1>
+                <form action="cambiaPass" method="post" enctype="multipart/form-data">
+                    <input type="text" name="password" Placeholder="Password" class='col-3 mx-auto'>
+                    <input type="submit" class='col-3 mx-auto' value="Cambiar contraseña">
+                </form>
+            </li>
+            <li>
+                <h2>Nickname</h2>
+                <p class="text-danger">{{ nickerror }}</p>
+                <p>{{ user.nickname }}</p>
+                <form action="cambiaNick" method="post" enctype="multipart/form-data">
+                    <input type="text" name="nickname" Placeholder="Nickname" class='col-3 mx-auto'>
+                    <input type="submit" class='col-3 mx-auto' value="Cambiar nick">
+                </form>
+            </li>
+            <li>
+                <h2>Email</h2>
+                <p class="text-danger">{{ emailerror }}</p>
+                <p>{{ user.email }}</p>
+                <form action="cambiaEmail" method="post" enctype="multipart/form-data">
+                    <input type="text" name="email" Placeholder="Email" class='col-3 mx-auto'>
+                    <input type="submit" class='col-3 mx-auto' value="Cambiar email">
+                </form>
+            </li>
+            <li>
+                <h2>Monedas</h2>
+                <p>{{ user.cantidad }}</p>
+            </li>
+            <li>
+                <h2>Skins</h2>
+                {% for i in user.skins %}
+                    <p>{{ i }}</p>
+                {% endfor %}
+            </li>
+            <li>
 
-
-<div class="example-wrapper">
-    <ul id="listaPerfil">
-        <li>
-            <h1>{{ controller_name }}</h1>
-            <form action="cambiaPass" method="post" enctype="multipart/form-data">
-                <input type="text" name="password" Placeholder="Password" class='col-3 mx-auto'>
-                <input type="submit" class='col-3 mx-auto' value="Cambiar contraseña">
-            </form>
-        </li>
-        <li>
-            <h2>Nickname</h2>
-            <p class="text-danger">{{ nickerror }}{{ num }}</p>
-            <p>{{ user.nickname }}</p>
-            <form action="cambiaNick" method="post" enctype="multipart/form-data">
-                <input type="text" name="nickname" Placeholder="Nickname" class='col-3 mx-auto'>
-                <input type="submit" class='col-3 mx-auto' value="Cambiar nick">
-            </form>
-        </li>
-        <li>
-            <h2>Email</h2>
-            <p class="text-danger">{{ emailerror }}{{ num }}</p>
-            <p>{{ user.email }}</p>
-            <form action="cambiaEmail" method="post" enctype="multipart/form-data">
-                <input type="text" name="email" Placeholder="Email" class='col-3 mx-auto'>
-                <input type="submit" class='col-3 mx-auto' value="Cambiar email">
-            </form>
-        </li>
-        <li>
-            <h2>Monedas</h2>
-            <p>{{ user.cantidad }}</p>
-        </li>
-        <li>
-            <h2>Skins</h2>
-            {% for i in user.skins %}
-                <p>{{ i }}</p>
-            {% endfor %}
-        </li>
-        <li>
-            
-        </li>
-    </ul>
-</div>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}

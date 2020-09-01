@@ -36,6 +36,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->persist($user);
         $this->_em->flush();
     }
+    /*
+        Función para buscar el campo que tiene un valor específico
+    */
     public function buscarPorCampo($campo, $valor) {
         $conn = $this->getEntityManager()->getConnection();
         $sql = '
@@ -46,6 +49,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $row = $stmt->fetchAll();
         return $row;
     }
+    /*
+        Función para buscar usuarios por el nick
+    */
     public function loadUserByUsername($username)
     {
         $conn = $this->getEntityManager()->getConnection();
@@ -56,15 +62,17 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $stmt = $conn->prepare($sql);
         $stmt->execute(['query' => $username]);
         $row = $stmt->fetchAll();
-        dump($row);
+        
         // returns an array of arrays (i.e. a raw data set)
-        return dump($row);
+        return $row;
     }
 
     /**
      * @return User[] Returns an array of User objects
      */
- 
+    /*
+        Función para buscar  usuarios por el nick
+    */
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('u')
@@ -88,6 +96,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->getOneOrNullResult()
         ;
     }
+    */
+    /*
+        Función para eliminar usuarios por el id
     */
     public function eliminarUser($id){
         $conn = $this->getEntityManager()->getConnection();

@@ -18,6 +18,9 @@ class ComentariosRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Comentarios::class);
     }
+    /*
+        Función para eliminar comentarios
+    */
     public function eliminarComentarios($id)
     {
         $conn = $this->getEntityManager()->getConnection();

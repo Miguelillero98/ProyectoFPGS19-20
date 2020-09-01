@@ -45,7 +45,7 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/ban, roles: ROLE_BANNED }
+        - { path: ^/ban, roles: ROLE_BANED }
         - { path: ^/dashboard, roles: ROLE_USER }
         - { path: ^/amigos, roles: ROLE_USER }
         - { path: ^/perfil, roles: ROLE_USER }

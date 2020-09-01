@@ -55,9 +55,12 @@
         {% endfor %}
     </div>
 {% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
-    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-    <script src="{{ asset('js/miAjax.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+        <script src="{{ asset('js/miAjax.js') }}"></script>
 {% endblock %}

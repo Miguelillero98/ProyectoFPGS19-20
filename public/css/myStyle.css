@@ -7,14 +7,19 @@ and open the template in the editor.
     Created on : 29-ago-2020, 13:21:47
     Author     : micha
 */
-
+.contenido{
+    min-height: calc(100vh-300px);
+}
+.barraNavegacion{
+    min-height: 150px
+}
+footer{
+    min-height: 150px
+}
 .carousel-inner{
     max-height: 500px;
 }
-#logo{
-    max-width: 100px;
-    max-height: 0.1 em;
-}
+
 #listaPerfil{
     list-style:none;
 }

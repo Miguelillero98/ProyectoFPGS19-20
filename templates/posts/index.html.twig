@@ -12,4 +12,11 @@
     <h1>{{ controller_name }}! ✅</h1>
     {{ form(form) }}
 </div>
+    
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}

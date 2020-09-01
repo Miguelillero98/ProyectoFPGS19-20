@@ -141,5 +141,12 @@ class PostsController extends AbstractController
             throw new \Exception('¿Estas tratando de hackearme?');
         }
     }
-    
+    /**
+     * @Route("/rss", name="rss")
+     */
+    public function rss(){
+        $em = $this->getDoctrine()->getManager();
+        $rss = $em->getRepository(Posts::class)->getRSS();
+        return $this->render('posts/rss.html.twig', ['rss' => $rss]);
+    }
 }
