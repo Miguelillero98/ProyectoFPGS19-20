@@ -26,7 +26,7 @@ class AmigosController extends AbstractController
         ]);
     }
     /**
-     * @Route("/busca_amigos",options={"expose"=true} , name="busca_amigos")
+     * @Route("/busca_amigos", name="busca_amigos")
      */
     public function search(Request $request)
     {
@@ -35,11 +35,10 @@ class AmigosController extends AbstractController
         $resultado = '';
         $nickEnBusca = $_POST['buscaAmigo'];
         $nicks = $em->getRepository(User::class)->loadUserByUsername($nickEnBusca);
-        $request->request('POST', '/submit', ['nicks' => $nicks]);
         return $this->render('amigos/index.html.twig', [
             'controller_name' => 'Amigos',
             'amigos' => $user->getMyFriends(),
-            'resultado' => $resultado
+            'resultado' => $nicks
         ]);
     }
     /**

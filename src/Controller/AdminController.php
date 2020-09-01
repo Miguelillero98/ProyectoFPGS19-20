@@ -31,6 +31,9 @@ class AdminController extends AbstractController
     /**
      * @Route("/packControl", name="packControl")
      */
+    /*
+     * Esta fincion sirve para añadir, modificar o eliminar un paquete
+     */
     public function packControl(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -80,6 +83,10 @@ class AdminController extends AbstractController
     }
     /**
      * @Route("/userControl", name="userControl")
+     */
+    
+    /*
+     * Esta fincion sirve para añadir, modificar o eliminar un usuario
      */
     public function userControl(Request $request, UserPasswordEncoderInterface $passwordEncoder){
         $em = $this->getDoctrine()->getManager();

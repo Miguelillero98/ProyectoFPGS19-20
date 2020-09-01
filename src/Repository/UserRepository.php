@@ -57,7 +57,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $conn = $this->getEntityManager()->getConnection();
         $sql = '
             SELECT u.id, u.nickname FROM user u
-            WHERE u.nickname like "%:query%"
+            WHERE u.nickname like ":query"
             ';
         $stmt = $conn->prepare($sql);
         $stmt->execute(['query' => $username]);

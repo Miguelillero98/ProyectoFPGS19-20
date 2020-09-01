@@ -54,5 +54,5 @@ security:
         - { path: ^/registrar-post, roles: [ROLE_USER, ROLE_ADMIN] }
         - { path: ^/mis-posts, roles: [ROLE_USER, ROLE_ADMIN] }
         - { path: ^/posts, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/comming, roles: ROLE_USER }
         - { path: ^/admin, roles: ROLE_ADMIN }
-        

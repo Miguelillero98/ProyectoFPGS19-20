@@ -15,22 +15,20 @@
         {% for i in amigos %}
             <div>
                 {{ i.nickname }}
-                <button>No hace nada</button>
+                <input type='button' value="Invitar" onclick="{{ path('comming') }}">
 
             </div>
         {% endfor %}
     </div>
     <div class="">
         <h3>Añadir amigos</h3>
-        <form method="post" action="busca_amigos">
+        <form method="post" action="{{ path('busca_amigos') }}">
             <input type='text' name='buscaAmigo' id='buscaAmigo' placeholder='Introduce el nickname'/>
-            <button id='Buscar' type="submit">
-                Buscar
-            </button>
+            <input type='submit' name='btnbuscaAmigo' id='btnbuscaAmigo' value='Buscar'/>
         </form>
         <div id="resultado">
             {% for i in resultado %}
-                <p>{{ i.nick }}</p>
+                <p>{{ i.nickname }}</p>
             {% endfor %}
         </div>
     </div>
